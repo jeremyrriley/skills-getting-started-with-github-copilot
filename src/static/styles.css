@@ -5,6 +5,15 @@
   font-family: Arial, sans-serif;
 }
 
+:root {
+  --school-navy: #1a237e;
+  --school-blue: #2563eb;
+  --school-sky: #dbeafe;
+  --card-border: #d7def2;
+  --card-shadow: 0 14px 30px rgba(26, 35, 126, 0.08);
+  --card-shadow-hover: 0 18px 36px rgba(37, 99, 235, 0.14);
+}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -12,16 +21,18 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background:
+    radial-gradient(circle at top, #ffffff 0%, #eef3ff 38%, #f7f8fc 100%);
 }
 
 header {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
-  background-color: #1a237e;
+  background: linear-gradient(135deg, var(--school-navy) 0%, #283593 55%, var(--school-blue) 100%);
   color: white;
-  border-radius: 5px;
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
 }
 
 header h1 {
@@ -44,10 +55,11 @@ main {
 section {
   background-color: white;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
   width: 100%;
   max-width: 500px;
+  border: 1px solid rgba(215, 222, 242, 0.85);
 }
 
 section h3 {
@@ -59,19 +71,133 @@ section h3 {
 
 .activity-card {
   margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 18px;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .activity-card h4 {
   margin-bottom: 10px;
-  color: #0066cc;
+  color: var(--school-blue);
+  font-size: 1.15rem;
 }
 
 .activity-card p {
   margin-bottom: 8px;
+}
+
+.activity-meta {
+  color: #334155;
+}
+
+.participants-section {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f8fbff 0%, #edf4ff 100%);
+  border: 1px solid #d8e4ff;
+}
+
+.participants-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.participants-heading {
+  font-weight: 700;
+  color: var(--school-navy);
+  margin-bottom: 0;
+}
+
+.participants-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--school-navy);
+  background-color: var(--school-sky);
+}
+
+.participant-list {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.participant-list-empty {
+  margin-left: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+.participant-item {
+  margin-bottom: 0;
+  color: #2f3b52;
+  word-break: break-word;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(191, 219, 254, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.participant-item:last-child {
+  margin-bottom: 0;
+}
+
+.participant-email {
+  flex: 1;
+}
+
+.participant-item-empty {
+  color: #6b7280;
+  font-style: italic;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.participant-remove-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.24);
+}
+
+.participant-remove-button:hover {
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.32);
+}
+
+.participant-remove-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.28);
+  outline-offset: 2px;
 }
 
 .form-group {
@@ -94,18 +220,20 @@ section h3 {
 }
 
 button {
-  background-color: #1a237e;
+  background: linear-gradient(135deg, var(--school-navy) 0%, var(--school-blue) 100%);
   color: white;
   border: none;
   padding: 10px 15px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
 }
 
 button:hover {
-  background-color: #3949ab;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(37, 99, 235, 0.28);
 }
 
 .message {
